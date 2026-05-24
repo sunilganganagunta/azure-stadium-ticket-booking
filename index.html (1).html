@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Azure Stadium Ticket Booking Infrastructure</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.6;
+}
+
+/* NAVBAR */
+
+nav{
+    background:white;
+    padding:20px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0px 2px 10px rgba(0,0,0,0.1);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav h2{
+    color:#0078d4;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#222;
+    font-weight:bold;
+}
+
+nav ul li a:hover{
+    color:#0078d4;
+}
+
+/* HERO SECTION */
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:white;
+}
+
+.hero h1{
+    font-size:50px;
+    color:#0078d4;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:900px;
+    margin:auto;
+    font-size:20px;
+    color:#444;
+}
+
+.btns{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    margin:10px;
+    background:#0078d4;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#005fa3;
+}
+
+/* SECTION */
+
+section{
+    padding:70px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:36px;
+    color:#0078d4;
+    margin-bottom:40px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0px 2px 10px rgba(0,0,0,0.1);
+}
+
+.card h3{
+    color:#0078d4;
+    margin-bottom:15px;
+}
+
+/* ARCHITECTURE */
+
+.architecture{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
+
+.arch-box{
+    background:white;
+    border:2px solid #ccc;
+    width:300px;
+    text-align:center;
+    padding:20px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.arrow{
+    font-size:28px;
+}
+
+.vm-container{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0px 2px 10px rgba(0,0,0,0.1);
+}
+
+table th, table td{
+    padding:15px;
+    border:1px solid #ddd;
+    text-align:left;
+}
+
+table th{
+    background:#0078d4;
+    color:white;
+}
+
+/* SECURITY */
+
+.security-box{
+    background:white;
+    padding:25px;
+    border-left:5px solid #0078d4;
+    margin-bottom:20px;
+    box-shadow:0px 2px 10px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+
+footer{
+    background:#0078d4;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <h2>Azure Stadium Project</h2>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#developer">Developer</a></li>
+    </ul>
+
+</nav>
+
+<!-- HERO SECTION -->
+
+<section class="hero" id="home">
+
+    <h1>Azure Stadium Ticket Booking Infrastructure</h1>
+
+    <p>
+        This project demonstrates a secure and scalable cloud infrastructure
+        built using Microsoft Azure services. The architecture includes
+        Virtual Machines, Load Balancer, Storage Account, Recovery Services Vault,
+        Microsoft Entra ID, RBAC, NSG Rules, SAS Tokens, and Azure Policy.
+    </p>
+
+    <div class="btns">
+        <a href="#" class="btn">View Architecture</a>
+        <a href="#" class="btn">GitHub Repository</a>
+        <a href="#" class="btn">Project Screenshots</a>
+    </div>
+
+</section>
+
+<!-- ARCHITECTURE -->
+
+<section id="architecture">
+
+    <h2 class="section-title">Architecture Flow</h2>
+
+    <div class="architecture">
+
+        <div class="arch-box">Users / Fans</div>
+
+        <div class="arrow">↓</div>
+
+        <div class="arch-box">
+            Azure Load Balancer <br>
+            <small>stadiumLB</small>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="arch-box">
+            Frontend Virtual Machine <br>
+            <small>vm-a-tickets</small>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="arch-box">
+            Application Virtual Machine <br>
+            <small>vm-b-app</small>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="arch-box">
+            Database Virtual Machine <br>
+            <small>vm-c-broadcast</small>
+        </div>
+
+        <div class="vm-container">
+
+            <div class="arch-box">
+                Storage Account <br>
+                <small>stsunilstadium123</small>
+            </div>
+
+            <div class="arch-box">
+                Recovery Services Vault <br>
+                <small>stadiumBackupVault</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+    <h2 class="section-title">Azure Services Used</h2>
+
+    <table>
+
+        <tr>
+            <th>Azure Service</th>
+            <th>Purpose</th>
+        </tr>
+
+        <tr>
+            <td>Virtual Machines</td>
+            <td>Host frontend, application, and database systems</td>
+        </tr>
+
+        <tr>
+            <td>Azure Load Balancer</td>
+            <td>Distribute incoming user traffic</td>
+        </tr>
+
+        <tr>
+            <td>Virtual Network</td>
+            <td>Secure communication between resources</td>
+        </tr>
+
+        <tr>
+            <td>Network Security Groups</td>
+            <td>Control inbound and outbound traffic</td>
+        </tr>
+
+        <tr>
+            <td>Storage Account</td>
+            <td>Store ticket and application data</td>
+        </tr>
+
+        <tr>
+            <td>Recovery Services Vault</td>
+            <td>Backup and disaster recovery</td>
+        </tr>
+
+        <tr>
+            <td>Microsoft Entra ID</td>
+            <td>Identity and access management</td>
+        </tr>
+
+        <tr>
+            <td>RBAC</td>
+            <td>Role-based access control</td>
+        </tr>
+
+        <tr>
+            <td>Azure Policy</td>
+            <td>Governance and compliance</td>
+        </tr>
+
+        <tr>
+            <td>SAS Token</td>
+            <td>Secure temporary storage access</td>
+        </tr>
+
+    </table>
+
+</section>
+
+<!-- SECURITY -->
+
+<section id="security">
+
+    <h2 class="section-title">Security & Governance</h2>
+
+    <div class="security-box">
+        <h3>Network Security</h3>
+        <p>
+            NSG rules were configured to allow communication between
+            frontend and application virtual machines while blocking
+            direct access to the database VM.
+        </p>
+    </div>
+
+    <div class="security-box">
+        <h3>Identity Management</h3>
+        <p>
+            Microsoft Entra ID and RBAC were implemented to manage
+            users, groups, and secure role assignments.
+        </p>
+    </div>
+
+    <div class="security-box">
+        <h3>Storage Security</h3>
+        <p>
+            SAS Tokens were generated for secure and temporary access
+            to Azure Storage resources.
+        </p>
+    </div>
+
+    <div class="security-box">
+        <h3>Backup & Recovery</h3>
+        <p>
+            Recovery Services Vault protects critical resources using
+            backup policies and disaster recovery configurations.
+        </p>
+    </div>
+
+</section>
+
+<!-- DEVELOPER -->
+
+<section id="developer">
+
+    <h2 class="section-title">Developer Information</h2>
+
+    <div class="card">
+
+        <h3>Sunil Ganganagunta</h3>
+
+        <p><strong>Project:</strong> Azure Stadium Ticket Booking Infrastructure</p>
+
+        <p><strong>University:</strong> Lovely Professional University</p>
+
+        <p><strong>Technologies:</strong> Microsoft Azure, HTML, CSS, Networking, Cloud Security</p>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        Developed by Sunil Ganganagunta | Azure Cloud Infrastructure Project
+    </p>
+
+</footer>
+
+</body>
+</html>
